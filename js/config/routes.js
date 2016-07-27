@@ -3,9 +3,11 @@
 
     angular.module('messenger').config(bindRoutes);
 
-    bindRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+    bindRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-    function bindRoutes($stateProvider, $urlRouterProvider) {
+    function bindRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
+        
+        $locationProvider.html5Mode(true);
 
         $urlRouterProvider.otherwise("/");
 
@@ -35,7 +37,8 @@
                 controller: 'DialogController',
                 controllerAs: 'dialog',
                 templateUrl: "./templates/dialog.html"
-            })
+            });
+
 
     }
 
