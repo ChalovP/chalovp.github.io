@@ -1,0 +1,28 @@
+<div class="scroll-box outer-height">
+    <div class="scroll-box-header">
+        <h2 class="scroll-box-title">
+            Диалог с
+            <button style="font-size: 36px" ui-sref="layout.dialogs" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+        </h2>
+    </div>
+    <div class="scroll-box-content outer-height">
+
+        <div class="panel panel-default" ng-repeat="message in dialog.dialog.parts">
+            <div class="panel-heading">{{message.author}}</div>
+            <div class="panel-body">
+                {{message.text}}
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="send-form bg-info" ng-class="{loaded: sendMessage.$pending}">
+    <form name="sendMessage" ng-submit="!sendMessage.$pending && dialog.sendMessage()">
+        <textarea ng-model="dialog.sendMessageForm.text" ng-disabled="sendMessage.$pending" class="form-control" rows="3"></textarea>
+        <button ng-disabled="sendMessage.$pending" type="submit" style="margin-top: 5px;" class="btn btn-success">Отправить</button>
+    </form>
+</div>
